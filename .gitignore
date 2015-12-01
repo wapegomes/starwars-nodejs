@@ -77,3 +77,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+## Directory-based project format:
+.idea/

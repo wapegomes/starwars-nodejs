@@ -30,21 +30,33 @@ router.post('/', function(req, res, next) {
 
     var droid = req.body;
 
-    if(!game.nome || !game.descricao || !game.plataformas) {
+    if(!droid.name || !droid.description || !droid.link || !droid.image) {
         return res.status(400).send({message:"Json invalido."});
     }
 
-    games.insert(game, function(err, doc) {
+    droids.insert(droid, function(err, doc) {
+
+        if (err) {
+            return res.status(500).send(err);
+        }
+        return res.send(doc);
+    });
+
+});
+
+router.get('/:droidId', function(req, res, next) {
+
+    var droidId = req.params.droidId;
+
+    droids.findById(droidId, function(err, doc){
 
         if (err) {
             return res.status(500).send(err);
         }
 
-        sendPush(doc);
-
         return res.send(doc);
-    });
 
+    });
 });
 
 module.exports = router;
