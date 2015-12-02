@@ -109,6 +109,7 @@ function save(userId, fileName, res) {
   users.findById(userId, function(err, result){
 
     if(err) {
+      console.error(err);
       return res.status(500).send(err);
     }
 
@@ -152,6 +153,7 @@ router.get('/:idUser/deviceToken/:token', function(req, res, next){
         return res.send(doc);
       }
 
+      console.error(err);
       return res.status(500).send(err);
 
     });
