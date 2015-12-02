@@ -121,6 +121,7 @@ function save(userId, fileName, res) {
         return res.send(doc);
       }
 
+      console.error(err);
       return res.status(500).send(err);
 
     });
