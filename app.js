@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var droids = require('./routes/droids');
+var films = require('./routes/films');
 
 var jwt = require('jwt-simple');
 var secret = "m'RN}GSFS%Hg7S2o1D;6Y|1@:DnPwRkrN^m{Nc1l]9yFeQ4<}3tU[st21M(AU";
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/droids', droids);
+app.use('/films', films);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
