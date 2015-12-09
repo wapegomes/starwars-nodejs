@@ -14,6 +14,8 @@ var multipartMiddleware = multipart();
 var gm = require('gm');
 var path = require('path');
 
+var message = require('../utils/message');
+
 router.get('/', function(req, res, next){
 
     droids.find({},function(err, result){
@@ -39,6 +41,9 @@ router.post('/', function(req, res, next) {
         if (err) {
             return res.status(500).send(err);
         }
+
+        message.sendMessage("droid", doc);
+
         return res.send(doc);
     });
 
@@ -55,7 +60,6 @@ router.get('/:droidId', function(req, res, next) {
         }
 
         return res.send(doc);
-
     });
 });
 
