@@ -15,7 +15,7 @@ router.get('/save/:token', function(req, res, next){
         return res.status(400).send({message:"Token invalido"});
     }
 
-    devices.insert({token:deviceToken},function(err, doc){
+    devices.findAndModify({token:deviceToken},{$set: {token:deviceToken}},{upsert:true},function(err, doc){
 
         if(!err) {
             return res.send(doc);
