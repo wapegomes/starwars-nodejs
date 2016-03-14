@@ -32,7 +32,7 @@ function sendPush(type, content, regIds) {
     message.addData('type', type);
     message.addData('content', content)
 
-    var sender = new gcm.Sender('AIzaSyCfluvBlrsfcfg-SdoO8uKCpwlMzbF4074');
+    var sender = new gcm.Sender('AIzaSyD6wgd9Q83J0rHeTylAJZ0WfGZ1JT_ETCg');
 
     sender.send(message, regIds, function (err, result) {
         if(err) console.error(err);
